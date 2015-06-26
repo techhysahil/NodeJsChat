@@ -1,0 +1,317 @@
+/*****************************************************
+ Project : Unicommerce chat
+ Author : Sahil Gupta
+ File : style.scss
+******************************************************/
+/* line 11, ../scss/style.scss */
+#live_support_container {
+  width: 460px;
+  position: absolute;
+  bottom: 0px;
+  right: 6%;
+  box-shadow: 0 0 5px #888888;
+}
+/* line 20, ../scss/style.scss */
+#live_support_container .header {
+  padding: 1px 4%;
+  height: 45px;
+  background-color: #3399cc;
+}
+/* line 24, ../scss/style.scss */
+#live_support_container .header .chat_icon {
+  margin-top: 10px;
+}
+/* line 26, ../scss/style.scss */
+#live_support_container .header .chat_icon .icon_live-support {
+  float: left;
+  color: #66cccc;
+  font-size: 16px;
+  padding-top: 3px;
+}
+/* line 33, ../scss/style.scss */
+#live_support_container .header .icon_Cancel {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  color: #fff;
+  font-size: 10px;
+}
+/* line 40, ../scss/style.scss */
+#live_support_container .header .title_text {
+  color: #FFFFFF;
+  margin-left: 25px;
+}
+/* line 46, ../scss/style.scss */
+#live_support_container .sub_header {
+  height: 45px;
+}
+/* line 48, ../scss/style.scss */
+#live_support_container .sub_header .search_box {
+  width: 70%;
+  height: 100%;
+  float: left;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+/* line 54, ../scss/style.scss */
+#live_support_container .sub_header .search_box .search_input {
+  width: 100%;
+  height: 100%;
+  padding-left: 13%;
+  border: 0px;
+  background-image: url("../../img/custom-icons/Search.svg"), url("../../img/custom-icons/Cancel.svg");
+  background-repeat: no-repeat;
+  background-position: 6% 48%, 94% 45%;
+  background-size: 16px 16px,8px 8px;
+}
+/* line 65, ../scss/style.scss */
+#live_support_container .sub_header .raise_issue {
+  width: 30%;
+  height: 100%;
+  padding: 12px 0px 0px 0px;
+  text-align: center;
+  color: #666666;
+  font-size: 10px;
+  float: left;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+}
+/* line 76, ../scss/style.scss */
+#live_support_container .sub_header .raise_issue .add_icon {
+  font-size: 16px;
+  margin-right: 8px;
+  font-weight: 100;
+}
+/* line 85, ../scss/style.scss */
+#live_support_container .issue_container .issue_item {
+  height: 110px;
+  background-color: #f1f3f3;
+  border-top: 1px solid #e6e5e5;
+}
+/* line 89, ../scss/style.scss */
+#live_support_container .issue_container .issue_item .issue_catagory {
+  width: 20%;
+  float: left;
+}
+/* line 92, ../scss/style.scss */
+#live_support_container .issue_container .issue_item .issue_catagory .hover_strip {
+  height: 110px;
+  width: 2px;
+  background-color: transparent;
+  float: left;
+}
+/* line 98, ../scss/style.scss */
+#live_support_container .issue_container .issue_item .issue_catagory .icon_container {
+  width: 60px;
+  height: 60px;
+  background-color: #3399cc;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  position: relative;
+  margin: 20px auto;
+}
+/* line 105, ../scss/style.scss */
+#live_support_container .issue_container .issue_item .issue_catagory .icon_container .icon {
+  font-size: 30px;
+  color: #fff;
+  position: relative;
+  top: 15px;
+  left: 18px;
+}
+/* line 112, ../scss/style.scss */
+#live_support_container .issue_container .issue_item .issue_catagory .icon_container .thread_count {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  color: #fff;
+  background-color: #dc3e4c;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 10px;
+  padding: 2px 0px 0px 1px;
+}
+/* line 127, ../scss/style.scss */
+#live_support_container .issue_container .issue_item .issue_body {
+  width: 80%;
+  float: right;
+  padding: 13px;
+  height: 100%;
+}
+/* line 132, ../scss/style.scss */
+#live_support_container .issue_container .issue_item .issue_body .issue_title {
+  float: left;
+  font-size: 16px;
+  font-weight: 500;
+  width: 70%;
+  line-height: 20px;
+}
+/* line 139, ../scss/style.scss */
+#live_support_container .issue_container .issue_item .issue_body .issue_date {
+  float: right;
+  width: 30%;
+  text-align: right;
+}
+/* line 144, ../scss/style.scss */
+#live_support_container .issue_container .issue_item .issue_body .issue_description {
+  clear: both;
+  font-size: 14px;
+  line-height: 22px;
+  color: #666666;
+  width: 85%;
+}
+/* line 154, ../scss/style.scss */
+#live_support_container .issue_container .issue_item.active {
+  background-color: #dde9f0;
+}
+/* line 156, ../scss/style.scss */
+#live_support_container .issue_container .issue_item.active .hover_strip {
+  background-color: #3399cc;
+}
+/* line 163, ../scss/style.scss */
+#live_support_container .create_issue {
+  background-color: #f1f3f3;
+}
+/* line 165, ../scss/style.scss */
+#live_support_container .create_issue h5 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+/* line 170, ../scss/style.scss */
+#live_support_container .create_issue form {
+  padding: 80px 45px 80px 45px;
+}
+/* line 172, ../scss/style.scss */
+#live_support_container .create_issue form .msg_box {
+  height: 85px !important;
+}
+/* line 176, ../scss/style.scss */
+#live_support_container .create_issue .form-group {
+  margin-bottom: 20px;
+}
+/* line 178, ../scss/style.scss */
+#live_support_container .create_issue .form-group .form-control {
+  height: 40px;
+}
+/* line 182, ../scss/style.scss */
+#live_support_container .create_issue .action-bar {
+  padding: 15px 0px;
+  text-align: center;
+  background-color: #ffffff;
+  border-top: 1px solid #dddddd;
+}
+/* line 187, ../scss/style.scss */
+#live_support_container .create_issue .action-bar button {
+  width: 110px;
+}
+/* line 190, ../scss/style.scss */
+#live_support_container .create_issue .action-bar .back_btn {
+  margin-right: 10px;
+  background-color: #999;
+  color: #fff;
+}
+/* line 199, ../scss/style.scss */
+#live_support_container .chat_item {
+  position: relative;
+}
+/* line 201, ../scss/style.scss */
+#live_support_container .chat_item .breadcrumb {
+  font-size: 12px;
+  background-color: #dddddd;
+  color: #999999;
+  padding-left: 5%;
+}
+/* line 206, ../scss/style.scss */
+#live_support_container .chat_item .breadcrumb .back {
+  color: #3399cc;
+  font-size: 12px;
+}
+/* line 210, ../scss/style.scss */
+#live_support_container .chat_item .breadcrumb .icon_back {
+  color: #2395cc;
+  font-size: 12px;
+  top: -1px;
+  position: relative;
+}
+/* line 217, ../scss/style.scss */
+#live_support_container .chat_item .chat_body {
+  position: relative;
+  overflow: scroll;
+}
+/* line 220, ../scss/style.scss */
+#live_support_container .chat_item .chat_body .user_msg {
+  display: inline-block;
+  position: relative;
+  clear: both;
+  padding: 15px;
+  margin: 10px 20px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 227, ../scss/style.scss */
+#live_support_container .chat_item .chat_body .user_msg .head {
+  line-height: 24px;
+}
+/* line 229, ../scss/style.scss */
+#live_support_container .chat_item .chat_body .user_msg .head .msg_time {
+  font-size: 10px;
+  color: #999999;
+}
+/* line 236, ../scss/style.scss */
+#live_support_container .chat_item .user_one {
+  background-color: #cbeff9;
+  float: right;
+}
+/* line 239, ../scss/style.scss */
+#live_support_container .chat_item .user_one:after {
+  content: "";
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #cbeff9;
+  position: absolute;
+  right: -8px;
+  top: 15px;
+}
+/* line 249, ../scss/style.scss */
+#live_support_container .chat_item .user_two {
+  background-color: #e7e8e8;
+  float: left;
+}
+/* line 252, ../scss/style.scss */
+#live_support_container .chat_item .user_two:before {
+  content: "";
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #e7e8e8;
+  position: absolute;
+  left: -8px;
+  top: 15px;
+}
+/* line 264, ../scss/style.scss */
+#live_support_container .write_msg {
+  clear: both;
+  position: relative;
+  padding: 8px 20px 15px 20px;
+  background-color: #f1f3f3;
+}
+/* line 269, ../scss/style.scss */
+#live_support_container .write_msg .options {
+  margin-bottom: 5px;
+  font-size: 16px;
+  margin-left: 5px;
+}
+/* line 273, ../scss/style.scss */
+#live_support_container .write_msg .options .icon_ShareScreen {
+  margin-right: 6px;
+}
+/* line 277, ../scss/style.scss */
+#live_support_container .write_msg .chat_msg_wrapper {
+  margin-bottom: 0px;
+}

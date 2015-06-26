@@ -1,35 +1,522 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-    </style>
-  </head>
+      <title>Live Chat</title>
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+      <!--<link rel="stylesheet" type="text/css" href="style/css/style.css" />-->
+      <!--<link rel="stylesheet" type="text/css" href="style/css/icons.css">-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <!--<script type="text/javascript" src="js/script.js"></script>-->
+      <style>
+          /*****************************************************
+ Project : Unicommerce chat
+ Author : Sahil Gupta
+ File : style.scss
+******************************************************/
+          /* line 11, ../scss/style.scss */
+          #live_support_container {
+              width: 460px;
+              position: absolute;
+              bottom: 0px;
+              right: 6%;
+              box-shadow: 0 0 5px #888888;
+          }
+          /* line 20, ../scss/style.scss */
+          #live_support_container .header {
+              padding: 1px 4%;
+              height: 45px;
+              background-color: #3399cc;
+          }
+          /* line 24, ../scss/style.scss */
+          #live_support_container .header .chat_icon {
+              margin-top: 10px;
+          }
+          /* line 26, ../scss/style.scss */
+          #live_support_container .header .chat_icon .icon_live-support {
+              float: left;
+              color: #66cccc;
+              font-size: 16px;
+              padding-top: 3px;
+          }
+          /* line 33, ../scss/style.scss */
+          #live_support_container .header .icon_Cancel {
+              position: absolute;
+              top: 18px;
+              right: 15px;
+              color: #fff;
+              font-size: 10px;
+          }
+          /* line 40, ../scss/style.scss */
+          #live_support_container .header .title_text {
+              color: #FFFFFF;
+              margin-left: 25px;
+          }
+          /* line 46, ../scss/style.scss */
+          #live_support_container .sub_header {
+              height: 45px;
+          }
+          /* line 48, ../scss/style.scss */
+          #live_support_container .sub_header .search_box {
+              width: 70%;
+              height: 100%;
+              float: left;
+              border-top: 1px solid #dddddd;
+              border-bottom: 1px solid #dddddd;
+          }
+          /* line 54, ../scss/style.scss */
+          #live_support_container .sub_header .search_box .search_input {
+              width: 100%;
+              height: 100%;
+              padding-left: 13%;
+              border: 0px;
+              background-image: url("../../img/custom-icons/Search.svg"), url("../../img/custom-icons/Cancel.svg");
+              background-repeat: no-repeat;
+              background-position: 6% 48%, 94% 45%;
+              background-size: 16px 16px,8px 8px;
+          }
+          /* line 65, ../scss/style.scss */
+          #live_support_container .sub_header .raise_issue {
+              width: 30%;
+              height: 100%;
+              padding: 12px 0px 0px 0px;
+              text-align: center;
+              color: #666666;
+              font-size: 10px;
+              float: left;
+              border-top: 1px solid #dddddd;
+              border-bottom: 1px solid #dddddd;
+              border-left: 1px solid #dddddd;
+          }
+          /* line 76, ../scss/style.scss */
+          #live_support_container .sub_header .raise_issue .add_icon {
+              font-size: 16px;
+              margin-right: 8px;
+              font-weight: 100;
+          }
+          /* line 85, ../scss/style.scss */
+          #live_support_container .issue_container .issue_item {
+              height: 110px;
+              background-color: #f1f3f3;
+              border-top: 1px solid #e6e5e5;
+          }
+          /* line 89, ../scss/style.scss */
+          #live_support_container .issue_container .issue_item .issue_catagory {
+              width: 20%;
+              float: left;
+          }
+          /* line 92, ../scss/style.scss */
+          #live_support_container .issue_container .issue_item .issue_catagory .hover_strip {
+              height: 110px;
+              width: 2px;
+              background-color: transparent;
+              float: left;
+          }
+          /* line 98, ../scss/style.scss */
+          #live_support_container .issue_container .issue_item .issue_catagory .icon_container {
+              width: 60px;
+              height: 60px;
+              background-color: #3399cc;
+              -moz-border-radius: 50%;
+              -webkit-border-radius: 50%;
+              border-radius: 50%;
+              position: relative;
+              margin: 20px auto;
+          }
+          /* line 105, ../scss/style.scss */
+          #live_support_container .issue_container .issue_item .issue_catagory .icon_container .icon {
+              font-size: 30px;
+              color: #fff;
+              position: relative;
+              top: 15px;
+              left: 18px;
+          }
+          /* line 112, ../scss/style.scss */
+          #live_support_container .issue_container .issue_item .issue_catagory .icon_container .thread_count {
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              color: #fff;
+              background-color: #dc3e4c;
+              -moz-border-radius: 50%;
+              -webkit-border-radius: 50%;
+              border-radius: 50%;
+              width: 20px;
+              height: 20px;
+              text-align: center;
+              font-size: 10px;
+              padding: 2px 0px 0px 1px;
+          }
+          /* line 127, ../scss/style.scss */
+          #live_support_container .issue_container .issue_item .issue_body {
+              width: 80%;
+              float: right;
+              padding: 13px;
+              height: 100%;
+          }
+          /* line 132, ../scss/style.scss */
+          #live_support_container .issue_container .issue_item .issue_body .issue_title {
+              float: left;
+              font-size: 16px;
+              font-weight: 500;
+              width: 70%;
+              line-height: 20px;
+          }
+          /* line 139, ../scss/style.scss */
+          #live_support_container .issue_container .issue_item .issue_body .issue_date {
+              float: right;
+              width: 30%;
+              text-align: right;
+          }
+          /* line 144, ../scss/style.scss */
+          #live_support_container .issue_container .issue_item .issue_body .issue_description {
+              clear: both;
+              font-size: 14px;
+              line-height: 22px;
+              color: #666666;
+              width: 85%;
+          }
+          /* line 154, ../scss/style.scss */
+          #live_support_container .issue_container .issue_item.active {
+              background-color: #dde9f0;
+          }
+          /* line 156, ../scss/style.scss */
+          #live_support_container .issue_container .issue_item.active .hover_strip {
+              background-color: #3399cc;
+          }
+          /* line 163, ../scss/style.scss */
+          #live_support_container .create_issue {
+              background-color: #f1f3f3;
+          }
+          /* line 165, ../scss/style.scss */
+          #live_support_container .create_issue h5 {
+              font-size: 16px;
+              margin-bottom: 20px;
+              font-weight: 600;
+          }
+          /* line 170, ../scss/style.scss */
+          #live_support_container .create_issue form {
+              padding: 80px 45px 80px 45px;
+          }
+          /* line 172, ../scss/style.scss */
+          #live_support_container .create_issue form .msg_box {
+              height: 85px !important;
+          }
+          /* line 176, ../scss/style.scss */
+          #live_support_container .create_issue .form-group {
+              margin-bottom: 20px;
+          }
+          /* line 178, ../scss/style.scss */
+          #live_support_container .create_issue .form-group .form-control {
+              height: 40px;
+          }
+          /* line 182, ../scss/style.scss */
+          #live_support_container .create_issue .action-bar {
+              padding: 15px 0px;
+              text-align: center;
+              background-color: #ffffff;
+              border-top: 1px solid #dddddd;
+          }
+          /* line 187, ../scss/style.scss */
+          #live_support_container .create_issue .action-bar button {
+              width: 110px;
+          }
+          /* line 190, ../scss/style.scss */
+          #live_support_container .create_issue .action-bar .back_btn {
+              margin-right: 10px;
+              background-color: #999;
+              color: #fff;
+          }
+          /* line 199, ../scss/style.scss */
+          #live_support_container .chat_item {
+              position: relative;
+          }
+          /* line 201, ../scss/style.scss */
+          #live_support_container .chat_item .breadcrumb {
+              font-size: 12px;
+              background-color: #dddddd;
+              color: #999999;
+              padding-left: 5%;
+          }
+          /* line 206, ../scss/style.scss */
+          #live_support_container .chat_item .breadcrumb .back {
+              color: #3399cc;
+              font-size: 12px;
+          }
+          /* line 210, ../scss/style.scss */
+          #live_support_container .chat_item .breadcrumb .icon_back {
+              color: #2395cc;
+              font-size: 12px;
+              top: -1px;
+              position: relative;
+          }
+          /* line 217, ../scss/style.scss */
+          #live_support_container .chat_item .chat_body {
+              position: relative;
+              overflow: scroll;
+          }
+          /* line 220, ../scss/style.scss */
+          #live_support_container .chat_item .chat_body .user_msg {
+              display: inline-block;
+              position: relative;
+              clear: both;
+              padding: 15px;
+              margin: 10px 20px;
+              -moz-border-radius: 3px;
+              -webkit-border-radius: 3px;
+              border-radius: 3px;
+          }
+          /* line 227, ../scss/style.scss */
+          #live_support_container .chat_item .chat_body .user_msg .head {
+              line-height: 24px;
+          }
+          /* line 229, ../scss/style.scss */
+          #live_support_container .chat_item .chat_body .user_msg .head .msg_time {
+              font-size: 10px;
+              color: #999999;
+          }
+          /* line 236, ../scss/style.scss */
+          #live_support_container .chat_item .user_one {
+              background-color: #cbeff9;
+              float: right;
+          }
+          /* line 239, ../scss/style.scss */
+          #live_support_container .chat_item .user_one:after {
+              content: "";
+              border-top: 8px solid transparent;
+              border-bottom: 8px solid transparent;
+              border-left: 8px solid #cbeff9;
+              position: absolute;
+              right: -8px;
+              top: 15px;
+          }
+          /* line 249, ../scss/style.scss */
+          #live_support_container .chat_item .user_two {
+              background-color: #e7e8e8;
+              float: left;
+          }
+          /* line 252, ../scss/style.scss */
+          #live_support_container .chat_item .user_two:before {
+              content: "";
+              border-top: 8px solid transparent;
+              border-bottom: 8px solid transparent;
+              border-right: 8px solid #e7e8e8;
+              position: absolute;
+              left: -8px;
+              top: 15px;
+          }
+          /* line 264, ../scss/style.scss */
+          #live_support_container .write_msg {
+              clear: both;
+              position: relative;
+              padding: 8px 20px 15px 20px;
+              background-color: #f1f3f3;
+          }
+          /* line 269, ../scss/style.scss */
+          #live_support_container .write_msg .options {
+              margin-bottom: 5px;
+              font-size: 16px;
+              margin-left: 5px;
+          }
+          /* line 273, ../scss/style.scss */
+          #live_support_container .write_msg .options .icon_ShareScreen {
+              margin-right: 6px;
+          }
+          /* line 277, ../scss/style.scss */
+          #live_support_container .write_msg .chat_msg_wrapper {
+              margin-bottom: 0px;
+          }
+
+          /* Generated by grunt-webfont */
+
+
+          @font-face {
+              font-family:"icons";
+              src:url("../../fonts/icons.eot?aad906c327ff27d12bddc5a15d3c685e");
+              src:url("../../fonts/icons.eot?#iefix") format("embedded-opentype"),
+              url("../../fonts/icons.woff?aad906c327ff27d12bddc5a15d3c685e") format("woff"),
+              url("../../fonts/icons.ttf?aad906c327ff27d12bddc5a15d3c685e") format("truetype");
+              font-weight:normal;
+              font-style:normal;
+          }
+
+          .icon {
+              font-family:"icons";
+              display:inline-block;
+              vertical-align:middle;
+              line-height:1;
+              font-weight:normal;
+              font-style:normal;
+              speak:none;
+              text-decoration:inherit;
+              text-transform:none;
+              text-rendering:optimizeLegibility;
+              -webkit-font-smoothing:antialiased;
+              -moz-osx-font-smoothing:grayscale;
+          }
+
+
+          /* Icons */
+
+
+          .icon_Attach:before {
+              content:"\f101";
+          }
+
+
+          .icon_Cancel:before {
+              content:"\f102";
+          }
+
+
+          .icon_Raise_an_issue:before {
+              content:"\f103";
+          }
+
+
+          .icon_Search:before {
+              content:"\f104";
+          }
+
+
+          .icon_ShareScreen:before {
+              content:"\f105";
+          }
+
+
+          .icon_back:before {
+              content:"\f106";
+          }
+
+
+          .icon_file:before {
+              content:"\f107";
+          }
+
+
+          .icon_live-support:before {
+              content:"\f108";
+          }
+
+
+          .icon_referral:before {
+              content:"\f109";
+          }
+
+
+          .icon_truck:before {
+              content:"\f10a";
+          }
+
+      </style>
+</head>
   <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      var socket = io();
-      $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-      });
-      socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
-      });
-    </script>
+      <ul id="messages"></ul>
+
+      <section id="live_support_container">
+          <!--Header section-->
+          <header class="header">
+              <div class="chat_icon">
+                  <i class="icon icon_live-support"></i>
+              </div>
+              <h4 class="title_text">Live support</h4>
+              <div>
+                  <i class="icon  icon_Cancel"></i>
+              </div>
+          </header>
+          <!--Sub Header section-->
+          <section class="sub_header">
+              <div class="search_box">
+                  <input type="text" class="search_input" placeholder="Search Issue">
+              </div>
+              <div class="raise_issue">
+                  <i class="icon  add_icon icon_Raise_an_issue"></i>
+                  <span class="text">RAISE AN ISSUE</span>
+              </div>
+          </section>
+
+          <section class="chat_item">
+              <div class="breadcrumb">
+                  <i class="icon icon_back"></i>
+                  <span class="back">Back</span>
+                  <span class="pull-right">Shooping Provider</span>
+              </div>
+              <div class="chat_body">
+
+                  <div class="user_msg user_one">
+                      <div class="head">
+                          <span><b>Lorem</b></span>
+                          <span class="pull-right msg_time">12.55 pm</span>
+                      </div>
+                      <div class="description">Referral credit would be 50% of the amount.
+                      </div>
+                  </div>
+
+                  <div class="user_msg user_two">
+                      <div class="head">
+                          <span><b>Lorem</b></span>
+                          <span class="pull-right msg_time">12.55 pm</span>
+                      </div>
+                      <div class="description">Referral credit would
+                      </div>
+                  </div>
+
+
+              </div>
+              <div class="write_msg">
+                  <div class="options">
+                      <i class="icon  icon_ShareScreen"></i>
+                      <i class="icon  icon_Attach"></i>
+                  </div>
+                  <div class="form-group chat_msg_wrapper">
+                      <form action="">
+                        <input type="text" id="chat-msg" class="form-control" placeholder="Type your message">
+                      </form>
+                  </div>
+              </div>
+          </section>
+
+          <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+          <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+          <script>
+               //other way around : var socket=io();
+              var socket = io.connect('http://localhost:3000');
+              $('form').submit(function(){
+                  socket.emit('chat message', $('#chat-msg').val());
+                  $('#chat-msg').val('');
+                  return false;
+              });
+              socket.on('chat message', function(msg){
+                      var a= '<div class="user_msg user_one">' +
+                              '<div class="head">' +
+                              '<span><b>'+ "Lorem" +'</b></span>' +
+                              '<span class="pull-right msg_time">'+ "12.55 pm" +'</span>' +
+                              '</div>' +
+                              '<div class="description">'+ msg + '</div>' +
+                              '</div>';
+
+                  $('.chat_body').append(a);
+              });
+          </script>
+          <script type="text/javascript">
+              $(function() {
+                  adjustWindowHeight();
+              });
+
+              $( window ).resize(function() {
+                  adjustWindowHeight();
+              });
+
+              function adjustWindowHeight(){
+                  var TotalHeight=$(window).outerHeight(),
+                          HeaderHeight=$('.header').outerHeight( true),
+                          SubheaderHeight=$('.sub_header').outerHeight( true),
+                          BreadcrumbHeight=$('.breadcrumb').outerHeight( true),
+                          WritemsgHeight=$('.write_msg').outerHeight( true );
+                  $('.chat_body').outerHeight(TotalHeight-(HeaderHeight+SubheaderHeight+BreadcrumbHeight+WritemsgHeight));
+              }
+
+
+
+          </script>
   </body>
 </html>

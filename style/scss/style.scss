@@ -1,0 +1,281 @@
+/*****************************************************
+ Project : Unicommerce chat
+ Author : Sahil Gupta
+ File : style.scss
+******************************************************/
+@import "compass/css3";
+
+$primary-color : #3399cc;
+$bg-color:#dddddd;
+
+#live_support_container{
+  width: 460px;
+//  min-width: 460px;
+//  width: 90%;
+  position: absolute;
+  bottom:0px;
+  right: 6%;
+  box-shadow: 0 0 5px #888888;
+   //Header style
+  .header{
+    padding: 1px 4%;
+    height: 45px;
+    background-color: $primary-color;
+    .chat_icon{
+      margin-top: 10px;
+      .icon_live-support{
+        float: left;
+        color: #66cccc;
+        font-size: 16px;
+        padding-top: 3px;
+      }
+    }
+    .icon_Cancel{
+      position: absolute;
+      top: 18px;
+      right: 15px;
+      color: #fff;
+      font-size: 10px;
+    }
+    .title_text{
+      color: #FFFFFF;
+      margin-left: 25px;
+    }
+  }
+  //Sub Header style
+  .sub_header{
+    height: 45px;
+    .search_box{
+      width: 70%;
+      height: 100%;
+      float: left;
+      border-top: 1px solid $bg-color;
+      border-bottom: 1px solid $bg-color;
+      .search_input{
+        width: 100%;
+        height: 100%;
+        padding-left: 13%;
+        border: 0px;
+        background-image: url("../../img/custom-icons/Search.svg"), url("../../img/custom-icons/Cancel.svg");
+        background-repeat: no-repeat;
+        background-position: 6% 48%, 94% 45%;
+        background-size: 16px 16px,8px 8px;
+      }
+    }
+    .raise_issue{
+      width: 30%;
+      height: 100%;
+      padding: 12px 0px 0px 0px;
+      text-align: center;
+      color: #666666;
+      font-size: 10px;
+      float: left;
+      border-top: 1px solid $bg-color;
+      border-bottom: 1px solid $bg-color;
+      border-left: 1px solid $bg-color;
+      .add_icon{
+        font-size: 16px;
+        margin-right: 8px;
+        font-weight: 100;
+      }
+    }
+  }
+//  Issue List Style
+  .issue_container{
+    .issue_item{
+      height: 110px;
+      background-color: #f1f3f3;
+      border-top: 1px solid #e6e5e5;
+      .issue_catagory{
+        width: 20%;
+        float: left;
+        .hover_strip{
+          height: 110px;
+          width: 2px;
+          background-color: transparent;
+          float: left;
+        }
+        .icon_container{
+          width: 60px;
+          height: 60px;
+          background-color: $primary-color;
+          @include border-radius(50%);
+          position: relative;
+          margin:20px auto;
+          .icon{
+            font-size: 30px;
+            color: #fff;
+            position: relative;
+            top: 15px;
+            left: 18px;
+          }
+          .thread_count{
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            color: #fff;
+            background-color: #dc3e4c;
+            @include border-radius(50%);
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            font-size: 10px;
+            padding: 2px 0px 0px 1px;
+          }
+        }
+      }
+      .issue_body{
+        width: 80%;
+        float: right;
+        padding: 13px;
+        height: 100%;
+        .issue_title{
+          float: left;
+          font-size: 16px;
+          font-weight: 500;
+          width: 70%;
+          line-height: 20px;
+        }
+        .issue_date{
+          float: right;
+          width: 30%;
+          text-align: right;
+        }
+        .issue_description{
+          clear: both;
+          font-size: 14px;
+          line-height: 22px;
+          color: #666666;
+          width: 85%;
+        }
+
+      }
+    }
+    .issue_item.active{
+      background-color: #dde9f0;
+      .hover_strip{
+        background-color: $primary-color;
+      }
+    }
+  }
+
+//  Issue List style
+  .create_issue{
+    background-color: #f1f3f3;
+    h5{
+      font-size: 16px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    form{
+      padding: 80px 45px 80px 45px;
+      .msg_box{
+        height: 85px !important;
+      }
+    }
+    .form-group{
+      margin-bottom: 20px;
+      .form-control{
+        height: 40px;
+      }
+    }
+    .action-bar{
+      padding: 15px 0px;
+      text-align: center;
+      background-color: #ffffff;
+      border-top: 1px solid $bg-color;
+      button{
+        width: 110px;
+      }
+      .back_btn{
+        margin-right: 10px;
+        background-color: #999;
+        color: #fff;
+      }
+    }
+  }
+
+//  Chat item Style
+  .chat_item{
+    position: relative;
+    .breadcrumb{
+      font-size: 12px;
+      background-color: $bg-color;
+      color: #999999;
+      padding-left: 5%;
+      .back{
+        color: $primary-color;
+        font-size: 12px;
+      }
+      .icon_back{
+        color: #2395cc;
+        font-size: 12px;
+        top: -1px;
+        position: relative;
+      }
+    }
+    .chat_body{
+      position: relative;
+      overflow: scroll;
+      .user_msg{
+        display: inline-block;
+        position: relative;
+        clear: both;
+        padding: 15px;
+        margin:10px 20px;
+        @include border-radius(3px);
+        .head{
+          line-height: 24px;
+          .msg_time{
+            font-size: 10px;
+            color: #999999;
+          }
+        }
+      }
+    }
+    .user_one{
+      background-color: #cbeff9;
+      float: right;
+      &:after{
+        content: "";
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 8px solid #cbeff9;
+        position: absolute;
+        right: -8px;
+        top: 15px;
+      }
+    }
+    .user_two{
+      background-color: #e7e8e8;
+      float: left;
+      &:before{
+        content: "";
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 8px solid #e7e8e8;
+        position: absolute;
+        left: -8px;
+        top: 15px;
+      }
+    }
+  }
+//  Write Message Style
+  .write_msg{
+    clear: both;
+    position: relative;
+    padding: 8px 20px 15px 20px;
+    background-color: #f1f3f3;
+    .options{
+      margin-bottom: 5px;
+      font-size: 16px;
+      margin-left: 5px;
+      .icon_ShareScreen{
+        margin-right: 6px;
+      }
+    }
+    .chat_msg_wrapper{
+      margin-bottom: 0px;
+    }
+  }
+}
